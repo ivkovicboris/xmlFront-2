@@ -1,0 +1,47 @@
+<div>
+    <div class="card card-body">
+        <div class="row justify-content-center">
+            <div class="col-6">
+              <form (ngSubmit)="addCar(form)" #form="ngForm">
+                <br>
+                <mat-form-field appearance="fill" style="margin:0px 0px 0px 20px">
+                  <mat-label>Brands</mat-label>
+                  <mat-select [(ngModel)]="selectedBrand" name="selectedBrand" (selectionChange)="brandChanged()">
+                    <mat-option *ngFor="let brand of brands" [value]="brand">
+                      {{brand.name}}
+                      </mat-option>
+                  </mat-select>
+                  </mat-form-field>
+                  <br>
+                <mat-form-field appearance="fill" style="margin:0px 0px 0px 20px">
+                  <mat-label>Models</mat-label>
+                  <mat-select [(ngModel)]="selectedModel" name="selectedModel"  >
+                      <mat-option *ngFor="let model of models" [value]="model">
+                      {{model.name}}
+                      </mat-option>
+                      
+                  </mat-select>
+                  </mat-form-field>
+                  <br>
+                <mat-form-field appearance="fill" style="margin:0px 0px 0px 20px">
+                  <mat-label>Fuel type</mat-label>
+                  <mat-select [(ngModel)]="selectedType" name="selectedType">
+                      <mat-option *ngFor="let type of types" [value]="type">
+                      {{type.name}}
+                      </mat-option>
+                  </mat-select>
+                  </mat-form-field>
+                <div class="form-group">
+                    <label for="price">Km traveled: </label>
+                    <input type="text " class="form-control" name="kilometars" ngModel #kilometars="ngModel" required/>
+                    <div class="text-danger" *ngIf="!kilometars.valid && kilometars.touched ">kilometars is required</div>
+                  </div>
+                <div class="form-group ">
+                  <button type="submit" class="btn btn-success" value="Add" [disabled]="!form.valid ">Add</button>
+                  <button (click)="resetForm(form)" class="btn btn-default">Cancel</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>  

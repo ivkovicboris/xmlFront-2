@@ -1,0 +1,38 @@
+<button routerLink="/addCar" >Add Car</button>
+<div>
+  <button initial class="btn btn-danger" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Add car brand</button>
+  <div class="collapse" id="collapseExample1">
+  <mat-form-field class="example-full-width">
+    <mat-label>Brand Name</mat-label>
+    <textarea matInput [(ngModel)]='brand'></textarea>
+    <button initial class="btn btn-danger" (click)="AddBrand()">Confirm</button>
+  </mat-form-field>
+</div>
+            <button initial class="btn btn-danger" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">Add car model</button>
+              <div class="collapse" id="collapseExample2">
+                <mat-form-field appearance="fill" style="margin:0px 0px 0px 20px">
+                  <mat-label>Car brand</mat-label>
+                  <mat-select [(ngModel)]="carBrand" name="carBrand">
+                      <mat-option *ngFor="let brand of carBrands" [value]="brand">
+                      {{brand.name}}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Model Name</mat-label>
+              <mat-form-field class="example-full-width">
+                <textarea matInput [(ngModel)]='model'></textarea>
+                <button initial class="btn btn-danger" (click)="AddModel(carBrand)">Confirm</button>
+              </mat-form-field>
+              </mat-form-field>
+            </div>
+            <button initial class="btn btn-danger" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">Add fuel type</button>
+              <div class="collapse" id="collapseExample3">
+              <mat-form-field class="example-full-width">
+                <mat-label>Fuel type</mat-label>
+                <textarea matInput [(ngModel)]='type'></textarea>
+                <button initial class="btn btn-danger" (click)="AddFuelType()">Confirm</button>
+              </mat-form-field>
+            </div>
+</div>
+

@@ -1,6 +1,8 @@
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../shared/DataService';
+import * as jwt_decode from "jwt-decode";
+import { Ad } from '../shared/Ad';
 
 
 @Component({
@@ -12,29 +14,44 @@ import { DataService } from '../shared/DataService';
 export class HomePageComponent implements OnInit {
 
     ads: any;
-
+    userId: any;
+    isClient = true;
     constructor(private router: Router, public data: DataService) {
     }
 
+    localsto
+
     ngOnInit() {
+        const token = localStorage.getItem('token');
+        const decodeToken = jwt_decode(token);
+        this.userId = decodeToken.jti;
+              if(decodeToken.Role=="Agent" || decodeToken.Role=="Admin"){
+                  this.isClient = false;
+              }
         this.data.getAllAds().subscribe(response => {
             this.ads = response;
         });
     }
 
-    AddToCart(id: string) {
+    SearchAds(startDate:Date, endDate: Date){
+        localStorage.setItem('startDate' , startDate.toString());
+        localStorage.setItem('endDate', endDate.toString());
+        //this.ads where date matching
+    }
+
+    AddToCart(ad:Ad) {
         if (localStorage.ads !== undefined) {
             let newList = [];
             newList = JSON.parse(localStorage.ads);
-            newList.push(id);
+            newList.push(ad);
             localStorage.ads = JSON.stringify(newList);
         } else {
             let newList = [];
-            newList.push(id);
+            newList.push(ad);
             localStorage.ads = JSON.stringify(newList);
         }
-
-        this.router.navigate(['Korpa']);
+        
+        this.router.navigate(['/Cart']);
     }
 
     Delete(id: any) {
@@ -44,13 +61,15 @@ export class HomePageComponent implements OnInit {
         //});
     }
 
-    DetailsGo(id: string){
+    ShowDetails(id: string){
         this.router.navigate(['Ad/', id]);
     }
 
     Edit(id: string){}
 
-
+    CreateNewAdd() {
+        this.router.navigate(["/addAd"]);
+    }
 
 
 }

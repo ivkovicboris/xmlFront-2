@@ -20,6 +20,7 @@ import { DatePipe } from '@angular/common';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { AgentHomePageComponent } from './agentHomePage/agentHomePage.component';
 
 
 const route = [
@@ -30,7 +31,8 @@ const route = [
   { path: 'addCar', component: AddCarComponent},
   { path: 'addAd', component: AddAdComponent},
   { path: 'adminHomePage', component: AdminHomePageComponent},
-  {   path: 'cart', component: CartComponent}
+  { path: 'cart', component: CartComponent},
+  { path: 'agentHomePage', component: AgentHomePageComponent},
 ];
 
 @NgModule({
@@ -42,7 +44,8 @@ const route = [
     AddCarComponent,
     AddAdComponent,
     AdminHomePageComponent,
-    CartComponent
+    CartComponent,
+    AgentHomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,12 @@ export class DataService {
         });
     }
 
+    public getAllAdRequests(): Observable<any[]> {
+        return this.http.get<any[]>(environment.webApiBaseUrl + 'Ad/GetAllAdRequests/', {
+            responseType: 'json'
+        });
+    }
+
     public getAllCars(): Observable<any[]> {
         return this.http.get<any[]>(environment.webApiBaseUrl + 'Car/GetAllCars/', {
             responseType: 'json'

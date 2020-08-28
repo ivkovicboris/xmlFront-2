@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminHomePageComponent } from './adminHomePage/adminHomePage.component';
 import {MatInputModule} from '@angular/material';
+import { CartComponent } from './cart/cart.component';
+
 
 const route = [
   { path: '', component: LoginComponent},
@@ -23,7 +25,8 @@ const route = [
   { path: 'homePage', component: HomePageComponent},
   { path: 'addCar', component: AddCarComponent},
   { path: 'addAd', component: AddAdComponent},
-  { path: 'adminHomePage', component: AdminHomePageComponent}
+  { path: 'adminHomePage', component: AdminHomePageComponent},
+  {   path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
@@ -34,8 +37,8 @@ const route = [
     HomePageComponent,
     AddCarComponent,
     AddAdComponent,
-    AdminHomePageComponent
-
+    AdminHomePageComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

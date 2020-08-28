@@ -36,7 +36,14 @@ export class AddAdComponent implements OnInit{
     }
 
    newAd(form: NgForm) {
-    const ad = new Ad('00000000-0000-0000-0000-000000000000',this.userId, this.selectedCar.id, form.value.price, form.value.cwd);
+    const ad = new Ad(
+        '00000000-0000-0000-0000-000000000000',
+        this.userId, 
+        this.selectedCar.id, 
+        form.value.price, 
+        form.value.cwd,
+        null
+        );
     this.data.AddAd(ad).subscribe(() => {
         this.resetForm(form);
         location.reload();

@@ -1,4 +1,5 @@
 import { Car } from './Car';
+import { AdAdRequest } from './AdAdRequest';
 
 export class Ad
 {
@@ -8,6 +9,7 @@ export class Ad
     //car: Car;
     price:number;
     cwd:boolean;   
+    adAdRequest: Array<AdAdRequest>;
      
     constructor
     (
@@ -16,13 +18,15 @@ export class Ad
         carId:string,
         //car: Car,
         price:number,
-        cwd:boolean
+        cwd:boolean,
+        adAdRequest:Array<AdAdRequest>
     ){
         this.id = id;
         this.userId = userId;
         this.carId = carId;
         //this.car = car;
         this.price = price; 
-        this.cwd = cwd;         
+        this.cwd = cwd;     
+        this.adAdRequest = adAdRequest;   
     }
 }

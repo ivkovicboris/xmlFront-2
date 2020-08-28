@@ -11,6 +11,7 @@ import { Car } from './Car';
 import { CarBrand } from './CarBrand';
 import { FuelType } from './FuelType';
 import { CarModel } from './CarModel';
+import { AdRequest } from './AdRequest';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -102,4 +103,9 @@ export class DataService {
          }
          return false;
      }
+
+     public ConfirmResesrvation(adRequest: AdRequest) {
+        return this.http.post(environment.webApiBaseUrl + 'Ad/AddAdRequest', adRequest);
+    }
+     
 }

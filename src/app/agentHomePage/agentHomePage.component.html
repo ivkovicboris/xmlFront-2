@@ -1,0 +1,24 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <h2>Rent requests</h2>
+      <table class="table table-hover sortable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Car</th>
+            <th scope="col" >Date</th>
+            <th scope="col">Respond</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let adAdRequest of adAdRequests; let i =index">
+              <td scope="row">{{i+1}}</td>
+              <td class="vertical-center">{{adAdRequest.ad.car.model.carBrand.name}} {{adAdRequest.ad.car.model.name}}</td>
+              <td class="vertical-center">{{adAdRequest.adRequest.startDate}} {{adAdRequest.adRequest.endDate}}</td>
+                <button initial class="btn btn-success" (click)="Accept(user.email)">Accept</button>
+                <button initial class="btn btn-danger" (click)="Deny(user.email)">Deny</button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

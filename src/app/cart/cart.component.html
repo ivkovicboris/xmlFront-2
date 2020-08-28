@@ -1,2 +1,22 @@
-
-<button class="btn btn-success" (click) = ConfirmResevation()>Confirm</button>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2>MY CART</h2>
+        <br><label>Start Date: </label> {{startDate | date:'medium'}} <br><label>End Date:  </label>  {{endDate | date:'medium'}}
+        <div>
+            <input type="checkbox" [(ngModel)]="bundle" />  Book in bundle
+        </div>
+        <div class = "ad"  *ngFor="let a of newList">
+            <div class="form-group" style="border: 0.5px solid black; padding: 5px;"> 
+                <div class="product-name text-center" style="margin:5px 0px 5px 0px"><strong>{{a.car.model.carBrend.name}}</strong></div>
+                <div class="product-name text-center" style="margin:5px 0px 5px 0px"><strong>{{a.car.model.name}}</strong></div>
+                <div class="text-center" style="color:#800000; margin:5px 0px 5px 0px">Price per day: {{a.price}},00 RSD</div>
+                <button class="btn btn-secondary" (click)=ShowDetails(a.car.id) >Car Details</button>
+            </div>
+            <br>
+        </div>
+        <div>
+            <button class="btn btn-success" (click) = ConfirmResevation()>Confirm</button> <br>
+            <br>
+        </div>
+    </div>
+</div>

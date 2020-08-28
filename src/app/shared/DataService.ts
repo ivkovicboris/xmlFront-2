@@ -108,4 +108,9 @@ export class DataService {
         return this.http.post(environment.webApiBaseUrl + 'Ad/AddAdRequest', adRequest);
     }
      
+    public GetFreeAdsByDate(startDate:Date, endDate: Date) : Observable<any[]> {
+        return this.http.get<any[]>(environment.webApiBaseUrl + 'Car/GetFreeAdsByDate/' + startDate +"/"+endDate, {
+            responseType: 'json'
+        });
+    }
 }

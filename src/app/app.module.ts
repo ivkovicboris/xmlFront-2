@@ -16,6 +16,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminHomePageComponent } from './adminHomePage/adminHomePage.component';
 import {MatInputModule} from '@angular/material';
 import { CartComponent } from './cart/cart.component';
+import { DatePipe } from '@angular/common';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 
 const route = [
@@ -52,8 +56,14 @@ const route = [
       { enableTracing: true }
     ),
     NoopAnimationsModule,
+    Ng2SearchPipeModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule, 
+    NgxMatNativeDateModule,
+    Ng2SearchPipeModule,
+    NgxDaterangepickerMd.forRoot()
   ],
-  providers: [DataService,
+  providers: [DatePipe, DataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

@@ -1,22 +1,33 @@
-<button (click)=CreateNewAdd() [hidden]="isClient">Create New Add</button>
-
-<div class="collapse" id="collapseExample">
-    <input type="text" placeholder="Chose start and end date for reservation"  ngxDaterangepickerMd startKey="StartDate" endKey="EndDate" [(ngModel)]="date" />
-    <button class="btn btn-secondary mr-3" (click)="SearchAds(date.StartDate._d, date.EndDate._d)">Send Request</button>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        
+        <div class="form-group" style="position: absolute; right: 10px;top: 10px;  margin: 20px 20px;">
+          <button  class="btn btn-danger" routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i></button><br><br>
+          <button class="btn btn-success" (click)=CreateNewAdd() [hidden]="isClient"> Create Add <i class="fa fa-plus"></i></button>
+        </div>
+      
+        <div class="form-group" style="width: 50%; display:inline-block;" >
+            <h2>Search cars</h2>
+            <input type="text" placeholder="Chose start and end date for reservation"  ngxDaterangepickerMd startKey="StartDate" endKey="EndDate" [(ngModel)]="date" />
+            <br><br><button class="btn btn-secondary mr-3" (click)="SearchAds(date.StartDate._d, date.EndDate._d)">Search</button>
+        </div>
+        <div class = "ad"   *ngFor="let a of ads">
+            <div class="form-group" style="border: 0.5px solid black; padding: 5px;"> 
+              <div class="product-name text-center" style="margin:5px 0px 5px 0px"><strong>{{a.car.model.carBrend.name}}</strong></div>
+              <div class="text-center" style="color:#800000; margin:5px 0px 5px 0px">{{a.price}},00 RSD</div>
+              <div style="margin:0px 0px 20px 0px;">
+                <button style="float:left" id="buyButton" class="buton-size left-margin btn btn-success btn-sm" (click)=ShowDetails(a.id) >Details</button>
+                <button style="float:right;" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=AddToCart(a) >Add to cart</button>
+              </div>
+              <br>
+              <div  [hidden]="!data.isAuthenticated()" style="align-items: center; margin-bottom: 8px;  display: flex; justify-content:space-between; ">
+                <button style="float:left" id="buyButton" class="buton-size left-margin btn btn-secondary btn-sm" (click)=Edit(a.id) >Edit</button>
+                <button style="float:right; margin-left:1px" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=Delete(a.id) >Remove</button>
+              </div>
+            </div>
+        </div>
+  </div>
 </div>
-
-<div class="product-info col-md-3 well well-sm col-sm-2 mali-ekran" style="padding:7px;"  *ngFor="let a of ads">
-    <div style="border: 0.5px solid black; padding: 1px;"> 
-        <div class="product-name text-center" style="margin:5px 0px 5px 0px"><strong>{{a.car.model.carBrend.name}}</strong></div>
-        <div class="text-center" style="color:#800000; margin:5px 0px 5px 0px">{{a.price}},00 RSD</div>
-        <div style="margin:0px 0px 20px 0px;">
-          <button style="float:left" id="buyButton" class="buton-size left-margin btn btn-success btn-sm" (click)=ShowDetails(a.id) >Details</button>
-          <button style="float:right;" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=AddToCart(a) >Add to cart</button>
-        </div>
-        <br>
-        <div  [hidden]="!data.isAuthenticated()" style="align-items: center; margin-bottom: 8px;  display: flex; justify-content:space-between; ">
-          <button style="float:left" id="buyButton" class="buton-size left-margin btn btn-secondary btn-sm" (click)=Edit(a.id) >Edit</button>
-          <button style="float:right; margin-left:1px" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=Delete(a.id) >Remove</button>
-        </div>
-      </div>
-    </div>

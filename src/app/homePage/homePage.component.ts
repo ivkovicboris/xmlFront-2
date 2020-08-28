@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../shared/DataService';
 import * as jwt_decode from "jwt-decode";
 import { Ad } from '../shared/Ad';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HomePageComponent implements OnInit {
     ads: any;
     userId: any;
     isClient = true;
-    constructor(private router: Router, public data: DataService) {
+    constructor(private router: Router, public data: DataService, public datepipe: DatePipe) {
     }
 
     localsto
@@ -34,9 +35,12 @@ export class HomePageComponent implements OnInit {
     }
 
     SearchAds(startDate:Date, endDate: Date){
-        localStorage.setItem('startDate' , startDate.toString());
-        localStorage.setItem('endDate', endDate.toString());
-        //this.ads where date matching
+        localStorage.setItem('startDate' , this.datepipe.transform(startDate, 'yyyy-MM-dd'));
+        localStorage.setItem('endDate', this.datepipe.transform(endDate, 'yyyy-MM-dd'));
+        
+        this.data.GetFreeAdsByDate(startDate, endDate).subscribe (response =>{
+            this.ads = response;
+        })
     }
 
     AddToCart(ad:Ad) {

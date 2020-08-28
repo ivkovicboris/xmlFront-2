@@ -1,33 +1,33 @@
-<div>
-    <div class="card card-body">
-        <div class="row justify-content-center">
-            <div class="col-6">
-              <form (ngSubmit)="newAd(form)" #form="ngForm">
-                <br>
-                <div class="form-group ">
-                  <mat-select [(ngModel)]="selectedCar" name="selectedCar" >
-                    <mat-label>Choose car </mat-label>
-                    <mat-option *ngFor="let car of cars; let i = index " [value]="car">
-                    {{car.model.carBrend.name}} {{car.model.name}} {{car.fuel.name}}
-                    </mat-option>
-                    
-                </mat-select>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="wrapper fadeInDown">
+  <div id="formContent">          
+    <h2>Create New Advertisment</h2>
+      <form (ngSubmit)="newAd(form)" #form="ngForm"><br>
+        <div class="form-group ">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose car </mat-label>
+            <mat-select [(ngModel)]="selectedCar" name="selectedCar" >
+                <mat-option *ngFor="let car of cars; let i = index " [value]="car">
+                  {{car.model.carBrend.name}} {{car.model.name}} {{car.fuel.name}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+              <div class="form-group" style="width: 20%; text-align: center; position: relative; display:inline-block;">
+                <label for="price">Price pre day:  </label>
+                <input type="text "  class="form-control" name="price" ngModel #price="ngModel" required/>
+                <div class="text-danger" *ngIf="!price.valid && price.touched ">Price is required</div>
               </div>
-                <div class="form-group">
-                    <label for="price">Cena po danu</label>
-                    <input type="text " class="form-control" name="price" ngModel #price="ngModel" required/>
-                    <div class="text-danger" *ngIf="!price.valid && price.touched ">Price is required</div>
-                  </div>
-                  <div class="form-group" style="margin-left:20px;">
-                    <input type="checkbox"  class="form-check-input"  name="cwd" ngModel #cwd="ngModel" />
-                    <label for="visibility">cwd</label>
-                  </div>
-                <div class="form-group ">
-                  <button type="submit" class="btn btn-success" value="Create">Create</button>
-                  <button (click)="resetForm(form)" class="btn btn-default">Cancel</button>
-                </div>
-              </form>
-            </div>
-        </div>
+              <div class="form-group" style="margin-left:20px;">
+                <input type="checkbox"  class="form-check-input"  name="cwd" ngModel #cwd="ngModel" />
+                <label for="visibility">cwd</label>
+              </div>
+              <div class="form-group ">
+                <button type="submit" class="btn btn-success" value="Create">Create</button>
+                <button (click)="resetForm(form)" class="btn btn-default">Cancel</button>
+              </div>
+        </form>
     </div>
-</div>  
+</div>

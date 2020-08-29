@@ -9,7 +9,7 @@ export class Ad
     //car: Car;
     price:number;
     cwd:boolean;   
-    adAdRequest: Array<AdAdRequest>;
+    adAdRequests: Array<AdAdRequest>;
      
     constructor
     (
@@ -19,7 +19,7 @@ export class Ad
         //car: Car,
         price:number,
         cwd:boolean,
-        adAdRequest:Array<AdAdRequest>
+        adAdRequests:Array<AdAdRequest>
     ){
         this.id = id;
         this.userId = userId;
@@ -27,6 +27,6 @@ export class Ad
         //this.car = car;
         this.price = price; 
         this.cwd = cwd;     
-        this.adAdRequest = adAdRequest;   
+        this.adAdRequests = adAdRequests;   
     }
 }

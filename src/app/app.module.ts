@@ -21,6 +21,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateMod
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { AgentHomePageComponent } from './agentHomePage/agentHomePage.component';
+import { RegisterAgentComponent } from './registerAgent/registerAgent.component';
 
 
 const route = [
@@ -33,6 +34,7 @@ const route = [
   { path: 'adminHomePage', component: AdminHomePageComponent},
   { path: 'cart', component: CartComponent},
   { path: 'agentHomePage', component: AgentHomePageComponent},
+  { path: 'registerAgent', component: RegisterAgentComponent}
 ];
 
 @NgModule({
@@ -45,7 +47,8 @@ const route = [
     AddAdComponent,
     AdminHomePageComponent,
     CartComponent,
-    AgentHomePageComponent
+    AgentHomePageComponent,
+    RegisterAgentComponent
   ],
   imports: [
     BrowserModule,

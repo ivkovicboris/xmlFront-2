@@ -12,6 +12,7 @@ import { CarBrand } from './CarBrand';
 import { FuelType } from './FuelType';
 import { CarModel } from './CarModel';
 import { AdRequest } from './AdRequest';
+import { AdAdRequest } from './AdAdRequest';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -52,6 +53,12 @@ export class DataService {
         });
     }
 
+    public getAllAdAccepted(): Observable<any[]> {
+        return this.http.get<any[]>(environment.webApiBaseUrl + 'Ad/GetAllAdAccepted/', {
+            responseType: 'json'
+        });
+    }
+
     public getAllCars(): Observable<any[]> {
         return this.http.get<any[]>(environment.webApiBaseUrl + 'Car/GetAllCars/', {
             responseType: 'json'
@@ -76,6 +83,15 @@ export class DataService {
     public AddAd(ad: Ad) {
         return this.http.post(environment.webApiBaseUrl + 'Ad/AddAd', ad);
     }
+
+    public AcceptAdRequest(adAdRequest: AdAdRequest) {
+        return this.http.post(environment.webApiBaseUrl + 'Ad/AcceptAdRequest', adAdRequest);
+    }
+
+    public FinishRent(adAdAcc: AdAdRequest) {
+        return this.http.post(environment.webApiBaseUrl + 'Ad/FinishRent', adAdAcc);
+    }
+
 
     public AddCar(car: Car) {
         return this.http.post(environment.webApiBaseUrl + 'Car/AddCar', car);
@@ -112,6 +128,10 @@ export class DataService {
 
      public ConfirmResesrvation(adRequest: AdRequest) {
         return this.http.post(environment.webApiBaseUrl + 'Ad/AddAdRequest', adRequest);
+    }
+
+    public BookAdByAdmin(adRequest: AdRequest) {
+        return this.http.post(environment.webApiBaseUrl + 'Ad/BookAdByAdmin', adRequest);
     }
      
     public GetFreeAdsByDate(startDate:Date, endDate: Date) : Observable<any[]> {

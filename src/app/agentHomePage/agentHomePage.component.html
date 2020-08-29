@@ -15,8 +15,29 @@
               <td scope="row">{{i+1}}</td>
               <td class="vertical-center">{{adAdRequest.ad.car.model.carBrand.name}} {{adAdRequest.ad.car.model.name}}</td>
               <td class="vertical-center">{{adAdRequest.adRequest.startDate}} {{adAdRequest.adRequest.endDate}}</td>
-                <button initial class="btn btn-success" (click)="Accept(user.email)">Accept</button>
+                <button initial class="btn btn-success" (click)="Accept(adAdRequest)">Accept</button>
                 <button initial class="btn btn-danger" (click)="Deny(user.email)">Deny</button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="formContent">
+      <h2>Rent accepted</h2>
+      <table class="table table-hover sortable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Car</th>
+            <th scope="col" >Date</th>
+            <th scope="col">Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let adAdAcc of adAdAccepted; let i =index">
+              <td scope="row">{{i+1}}</td>
+              <td class="vertical-center">{{adAdAcc.ad.car.model.carBrand.name}} {{adAdAcc.ad.car.model.name}}</td>
+              <td class="vertical-center">{{adAdAcc.adRequest.startDate}} {{adAdAcc.adRequest.endDate}}</td>
+                <button initial class="btn btn-success" (click)="FinishRent(adAdAcc)">Finish</button>
           </tr>
         </tbody>
       </table>

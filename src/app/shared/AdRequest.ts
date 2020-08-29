@@ -7,7 +7,7 @@ export class AdRequest
     startDate: Date;
     endDate: Date;
     requestStatus: string;
-    adAdRequest: Array<AdAdRequest>;
+    adAdRequests: Array<AdAdRequest>;
 
     constructor(
         id:string,
@@ -15,14 +15,14 @@ export class AdRequest
         startDate:Date,
         endDate:Date,
         requestStatus:string,
-        adAdRequest: Array<AdAdRequest>,
+        adAdRequests: Array<AdAdRequest>,
     ){
         this.id = id;
         this.clientId = clientId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.requestStatus = requestStatus;
-        this.adAdRequest = adAdRequest;
+        this.adAdRequests = adAdRequests;
     }
 
 }

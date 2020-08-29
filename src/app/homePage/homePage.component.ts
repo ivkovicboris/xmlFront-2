@@ -4,6 +4,8 @@ import { DataService } from '../shared/DataService';
 import * as jwt_decode from "jwt-decode";
 import { Ad } from '../shared/Ad';
 import { DatePipe } from '@angular/common';
+import { AdAdRequest } from '../shared/AdAdRequest';
+import { AdRequest } from '../shared/AdRequest';
 
 
 @Component({
@@ -13,7 +15,11 @@ import { DatePipe } from '@angular/common';
 })
 
 export class HomePageComponent implements OnInit {
-
+    newAdAdRequest : AdAdRequest;
+    listOfAdAdRequest:Array<AdAdRequest>;
+    newAdRequest:AdRequest;
+    startDate:Date;
+    endDate:Date;
     ads: any;
     userId: any;
     isClient = true;
@@ -56,6 +62,30 @@ export class HomePageComponent implements OnInit {
         }
         
         this.router.navigate(['/Cart']);
+    }
+
+    BookAdByAdmin(ad: Ad){
+        this.newAdAdRequest = new AdAdRequest(
+            ad.id,
+            ad,
+            "00000000-0000-0000-0000-000000000000",
+            null
+        )
+        this.newAdRequest = new AdRequest(
+            '00000000-0000-0000-0000-000000000000',
+            this.userId,
+            this.startDate,
+            this.endDate,
+            "",
+            [this.newAdAdRequest]
+        );
+        this.data.BookAdByAdmin(this.newAdRequest).subscribe (response =>{
+            if(response){
+                alert('succesfull');
+            } else {
+                alert('error');
+            }
+        });
     }
 
     Delete(id: any) {

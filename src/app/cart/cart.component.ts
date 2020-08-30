@@ -37,10 +37,10 @@ export class CartComponent implements OnInit {
         this.userId = decodeToken.jti;
 
         this.newList = JSON.parse( localStorage.ads);
-        this.startDate = new Date(/*localStorage.getItem('startDate')*/);
-        //this.endDate = new Date(localStorage.getItem('endDate'));
-        this.endDate = new Date();
-        this.endDate.setDate(30);
+        this.startDate = new Date(localStorage.getItem('startDate'));
+        this.endDate = new Date(localStorage.getItem('endDate'));
+        //this.endDate = new Date();
+        //this.endDate.setDate(30);
     }
     
 

@@ -61,7 +61,7 @@ export class HomePageComponent implements OnInit {
             localStorage.ads = JSON.stringify(newList);
         }
         
-        this.router.navigate(['/Cart']);
+        this.router.navigate(['/cart']);
     }
 
     BookAdByAdmin(ad: Ad){

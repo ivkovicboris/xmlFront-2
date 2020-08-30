@@ -10,7 +10,7 @@
             <mat-label>Choose car </mat-label>
             <mat-select [(ngModel)]="selectedCar" name="selectedCar" >
                 <mat-option *ngFor="let car of cars; let i = index " [value]="car">
-                  {{car.model.carBrend.name}} {{car.model.name}} {{car.fuel.name}}
+                  {{car.model.carBrand.name}} {{car.model.name}} {{car.fuel.name}}
                 </mat-option>
             </mat-select>
           </mat-form-field>

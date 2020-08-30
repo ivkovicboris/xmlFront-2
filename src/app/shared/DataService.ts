@@ -13,6 +13,8 @@ import { FuelType } from './FuelType';
 import { CarModel } from './CarModel';
 import { AdRequest } from './AdRequest';
 import { AdAdRequest } from './AdAdRequest';
+import { DaterangepickerComponent } from 'ngx-daterangepicker-material';
+import { DateRange } from './DateRange';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -135,8 +137,6 @@ export class DataService {
     }
      
     public GetFreeAdsByDate(startDate:Date, endDate: Date) : Observable<any[]> {
-        return this.http.get<any[]>(environment.webApiBaseUrl + 'Car/GetFreeAdsByDate/' + startDate +"/"+endDate, {
-            responseType: 'json'
-        });
+        return this.http.post<any[]>(environment.webApiBaseUrl + 'Ad/GetFreeAdsByDate/', new DateRange(startDate, endDate));
     }
 }

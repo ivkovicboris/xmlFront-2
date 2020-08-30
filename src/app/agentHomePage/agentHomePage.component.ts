@@ -35,6 +35,7 @@ export class AgentHomePageComponent {
         } else {
           alert("error");
         }
+        window.location.reload();
       });
     }
 

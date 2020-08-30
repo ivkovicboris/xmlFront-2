@@ -6,7 +6,7 @@
     <div id="formContent">
         
         <div class="form-group" style="position: absolute; right: 10px;top: 10px;  margin: 20px 20px;">
-          <button  class="btn btn-danger" routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i></button><br><br>
+          <button  class="btn btn-danger" routerLink="/cart" [hidden]="!isClient"> Cart <i class="fa fa-shopping-cart" ></i></button><br><br>
           <button class="btn btn-success" (click)=CreateNewAdd() [hidden]="isClient"> Create Add <i class="fa fa-plus"></i></button>
           
         </div>
@@ -22,7 +22,7 @@
               <div class="text-center" style="color:#800000; margin:5px 0px 5px 0px">{{a.price}},00 RSD</div>
               <div style="margin:0px 0px 20px 0px;">
                 <button style="float:left" id="buyButton" class="buton-size left-margin btn btn-success btn-sm" (click)=ShowDetails(a.id) >Details</button>
-                <button style="float:right;" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=AddToCart(a) >Add to cart</button>
+                <button style="float:right;" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=AddToCart(a) [hidden]="!isClient" >Add to cart</button>
                 <button style="float:right;" id="buyButton" class="buton-size right-margin btn btn-warning btn-sm" (click)=BookAdByAdmin(a) [hidden]="isClient" >Book</button>
               </div>
               <br>
